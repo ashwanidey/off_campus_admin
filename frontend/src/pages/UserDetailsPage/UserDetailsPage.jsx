@@ -8,11 +8,9 @@ const userDetailsPage = () => {
   const [userDetails, setUser] = useState(null);
    useEffect(() => {
       async function fetchUsers() {
-        const response = await axios.get(`${host}/users/get-users`, {
-          id
-        }
+        const response = await axios.get(`${host}/users/get-user/${id}`
         );
-        setUser(response.data[0]);
+        setUser(response.data);
       }
       fetchUsers();
     }, []);

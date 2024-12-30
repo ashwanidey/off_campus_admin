@@ -11,7 +11,7 @@ export const getUsers = async (req, res) => {
 }
 
 export const getUser = async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   try {
     const user = await User.findOne({user_id:id});
     user.session_purchased = user.session_purchased.filter(session => session.date >= new Date() && session.status === 'success');
