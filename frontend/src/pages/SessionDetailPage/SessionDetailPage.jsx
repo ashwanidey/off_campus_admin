@@ -26,13 +26,13 @@ const SessionDetailPage = () => {
             <th className="py-3 px-6 text-left">Session ID</th>
           </tr>
         </thead>
-        <tbody className="text-gray-600 text-sm font-light">
+        <tbody className="text-black font-bold text-sm ">
           {sessions.map((session) => (
             <tr key={session._id} className="border-b border-gray-200 hover:bg-gray-100">
               <td className="py-3 px-6 text-left whitespace-nowrap">
                 {new Date(session.timestamp).toLocaleString()}
               </td>
-              <td className="py-3 px-6 text-left">{session.user_id}</td>
+              <td className="py-3 px-6 text-left"><a href={`/details/${session.user_id}`}>{session.user_id}</a></td>
               <td className="py-3 px-6 text-left">{session.email}</td>
               <td className="py-3 px-6 text-left">{session._id}</td>
             </tr>

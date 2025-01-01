@@ -11,6 +11,7 @@ const UserTable = ({users}) => {
           <th scope="col" className="px-6 py-3">Email</th>
           <th scope="col" className="px-6 py-3">Mobile Number</th>
           <th scope="col" className="px-6 py-3">View Details</th>
+          <th scope="col" className="px-6 py-3">Course Purchased</th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,7 @@ const UserTable = ({users}) => {
             <td className="px-6 py-4">
               <a href={`/details/${user.user_id}`}>View Details</a>
             </td>
+            <td className="px-6 py-4">{user.course_purchased.length > 0 ? "✅" : "❌"}</td>
           </tr>
         ))}
       </tbody>
