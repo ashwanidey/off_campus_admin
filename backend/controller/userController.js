@@ -27,7 +27,7 @@ export const getSession = async (req, res) => {
   try {
     const session = await Session.findOne({sessionid:101});
     session.booked_dates.sort((a,b) => new Date(a.timestamp) - new Date(b.timestamp));
-    session.booked_dates = session.booked_dates.filter(date => date.timestamp > new Date());
+    session.booked_dates = session.booked_dates.filter(date => date.timestamp > new Date() && date.email !== "ashwanidey2904@gmail.com");
     res.status(200).json(session.booked_dates);
   } catch (error) {
     res.status(404).json({ message: error.message });
