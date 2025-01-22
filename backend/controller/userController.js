@@ -1,9 +1,11 @@
+import { Expert } from "../models/Experts.js";
 import { Session } from "../models/Session.js";
 import { User } from "../models/User.js";
 
 export const getUsers = async (req, res) => {
   try {
     const users = await User.find();
+    users.reverse();
     res.status(200).json(users);
   } catch (error) {
     res.status(404).json({ message: error.message });
@@ -25,10 +27,17 @@ export const getUser = async (req, res) => {
 export const getSession = async (req, res) => {
  
   try {
-    const session = await Session.findOne({sessionid:101});
-    session.booked_dates.sort((a,b) => new Date(a.timestamp) - new Date(b.timestamp));
-    session.booked_dates = session.booked_dates.filter(date => date.timestamp > new Date() && date.email !== "ashwanidey2904@gmail.com");
-    res.status(200).json(session.booked_dates);
+    const expert = await Expert.findOne({id:101});
+    expert.booked_dates.sort((a,b) => new Date(a.timestamp) - new Date(b.timestamp));
+    expert.booked_dates = expert.booked_dates.filter(date => date.timestamp > new Date() && date.email !== "ashwanidey2904@gmail.com");
+    const sessions = await Session.find({});
+
+    const data = expert.booked_dates.map(date => {
+      return {
+        ...date._doc,title: sessions.find(session => session.sessionid === (date.item_id ? date.item_id : 101))._doc.title
+      }
+    });
+    res.status(200).json(data);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

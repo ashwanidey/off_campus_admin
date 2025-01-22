@@ -23,18 +23,18 @@ const SessionDetailPage = () => {
             <th className="py-3 px-6 text-left">Timestamp</th>
             <th className="py-3 px-6 text-left">User ID</th>
             <th className="py-3 px-6 text-left">Email</th>
-            <th className="py-3 px-6 text-left">Session ID</th>
+            <th className="py-3 px-6 text-left">Title</th>
           </tr>
         </thead>
-        <tbody className="text-black font-bold text-sm ">
+        <tbody className={`text-black font-bold text-sm `}>
           {sessions.map((session) => (
-            <tr key={session._id} className="border-b border-gray-200 hover:bg-gray-100">
+            <tr key={session._id} className={`border-b border-gray-200 hover:bg-gray-100 ${session.item_id === 102 ? 'bg-green-200' : 'bg-white'}`}>
               <td className="py-3 px-6 text-left whitespace-nowrap">
                 {new Date(session.timestamp).toLocaleString()}
               </td>
               <td className="py-3 px-6 text-left"><a href={`/details/${session.user_id}`}>{session.user_id}</a></td>
               <td className="py-3 px-6 text-left">{session.email}</td>
-              <td className="py-3 px-6 text-left">{session._id}</td>
+              <td className="py-3 px-6 text-left">{session.title}</td>
             </tr>
           ))}
         </tbody>

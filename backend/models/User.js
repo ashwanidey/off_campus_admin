@@ -52,6 +52,8 @@ const UserSchema = new mongoose.Schema({
       purchased_date : { type: Date, default: Date.now() },
       order_id: { type: String, required: true },
       status: { type: String, default: "pending" },
+      reschedule_for : {type:Number,default:0},
+      is_reschedule : {type:Boolean,default:false},
     }
   ],
   product_purchased: [

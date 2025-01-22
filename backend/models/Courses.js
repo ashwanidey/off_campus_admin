@@ -40,6 +40,7 @@ const CourseSchema = new mongoose.Schema({
       description: { type: String, required: true },
       duration: { type: String, required: true },
       videourl: { type: String, required: true },
+      gumletid: { type: String, required: true },
       resource: { type: String, required: false },
     }
   ]
