@@ -1,4 +1,5 @@
 import { Expert } from "../models/Experts.js";
+import { Service } from "../models/Service.js";
 import { Session } from "../models/Session.js";
 import { User } from "../models/User.js";
 
@@ -38,6 +39,16 @@ export const getSession = async (req, res) => {
       }
     });
     res.status(200).json(data);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
+
+export const getResumeReview = async (req, res) => {
+  try {
+    const review = await Service.findOne({serviceid:101});
+
+    res.status(200).json(review.booked_services);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

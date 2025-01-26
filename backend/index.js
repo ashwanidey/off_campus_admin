@@ -24,15 +24,7 @@ mongoose
     
     app.listen(PORT, () => {
       console.log(`Server is running at Port: ${PORT}`);
-      const selfPingUrl = `http://localhost:${PORT}/keep_alive`;
-      setInterval(async () => {
-        try {
-          await axios.get(selfPingUrl);
-          console.log(`Self-ping successful at ${new Date().toISOString()}`);
-        } catch (error) {
-          console.error(`Self-ping failed: ${error.message}`);
-        }
-      }, 5 * 60 *  1000);
+      
     });
     
   })

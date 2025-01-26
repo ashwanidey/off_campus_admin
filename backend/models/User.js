@@ -63,6 +63,17 @@ const UserSchema = new mongoose.Schema({
       order_id: { type: String, required: true },
     }
   ],
+  service_purchased : [
+    {
+      service_id : { type: Number, required: true },
+      purchased_date : { type: Date, default: Date.now() },
+      order_id: { type: String, required: true },
+      item_id : { type: Number, required: false },
+      status: { type: String, default: "pending" },
+      filename : { type: String, required : true },
+      note : { type: String, required : false },
+    }
+  ]
 });
 
 export const User = mongoose.model('User', UserSchema);
