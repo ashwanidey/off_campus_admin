@@ -54,6 +54,8 @@ const UserSchema = new mongoose.Schema({
       status: { type: String, default: "pending" },
       reschedule_for : {type:Number,default:0},
       is_reschedule : {type:Boolean,default:false},
+      friend_email : {type:String,default:""},
+      is_bring_friend : {type:Boolean,default:false},
     }
   ],
   product_purchased: [
@@ -72,6 +74,13 @@ const UserSchema = new mongoose.Schema({
       status: { type: String, default: "pending" },
       filename : { type: String, required : true },
       note : { type: String, required : false },
+    }
+  ],
+  webinar_purchased : [
+    {
+      webinar_id : { type: Number, required: true },
+      purchased_date : { type: Date, default: Date.now() },
+      order_id: { type: String, required: true },
     }
   ]
 });

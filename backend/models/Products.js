@@ -20,6 +20,8 @@ const ProductSchema = new mongoose.Schema({
     },
   ],
   item_link: { type: String, default: "" },
+  author  : { type: String, default: "" },
+  author_image : { type: String, default: "" },
 });
 
 export const Product = mongoose.model("Product", ProductSchema);

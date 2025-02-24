@@ -6,6 +6,7 @@ const HomePage = () => {
     <a href="/users">Users</a>
     <a href="/session">Session</a>
     <a href="/resume-review">Resume Review</a>
+    <a href="/webinar">Webinar</a>
     </div>
   )
 }

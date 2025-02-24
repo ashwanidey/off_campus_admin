@@ -35,6 +35,15 @@ const SessionSchema = new mongoose.Schema({
   author : { type: String, default: "" },
   reschedule_price : { type: Number, default: "" },
   author_image : { type: String, default: "" },
+  stats : [
+    {
+      label : { type: String},
+      value : { type: String},
+    }
+  ],
+  type : { type: String, default: "" },
+  bring_friend_price : { type: Number, default: 0 },
+  rebook_price : { type: Number, default: 0 },
   
 });
 

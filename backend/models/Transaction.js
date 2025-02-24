@@ -29,6 +29,14 @@ const transactionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  is_course_extension : {
+    type: Boolean,
+    default: false,
+  },
+  extended_days : {
+    type: Number,
+    default : 0,
+  },
   created_at: {
     type: Date,
     default: Date.now,
@@ -36,6 +44,10 @@ const transactionSchema = new mongoose.Schema({
   updated_at: {
     type: Date,
     default: Date.now,
+  },
+  is_gift : {
+    type: Boolean,
+    default: false,
   },
   
 });

@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage/HomePage'
 import UserDetailsPage from './pages/UserDetailsPage/UserDetailsPage'
 import SessionDetailPage from './pages/SessionDetailPage/SessionDetailPage'
 import ResumeReviewPage from './pages/ResumeReviewPage/ResumeReviewPage'
+import WebinarPage from './pages/WebinarPage/WebinarPage'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
         <Route path="/details/:id" element={<UserDetailsPage/>} />
         <Route path="/session" element={<SessionDetailPage/>} />
         <Route path="/resume-review" element={<ResumeReviewPage/>} />
+        <Route path="/webinar" element={<WebinarPage/>} />
       </Routes>
       
     

@@ -13,6 +13,7 @@ const CourseSchema = new mongoose.Schema({
   type: { type: String, required: true },
   number_of_lectures: { type: Number, required: true },
   rating: { type: Number, default: 0 },
+  extension_price : {type:Number,default:0},
   tags: [
     {
       name: { type: String, required: true },

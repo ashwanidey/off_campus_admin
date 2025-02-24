@@ -2,6 +2,7 @@ import { Expert } from "../models/Experts.js";
 import { Service } from "../models/Service.js";
 import { Session } from "../models/Session.js";
 import { User } from "../models/User.js";
+import { Webinar } from "../models/Webinar.js";
 
 export const getUsers = async (req, res) => {
   try {
@@ -53,3 +54,16 @@ export const getResumeReview = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 }
+
+
+export const getWebinars = async (req, res) => {
+
+  try {
+    const webinars = await Webinar.findOne({id:101});
+    res.status(200).json(webinars.participants);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+}
+
+
