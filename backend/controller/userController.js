@@ -66,4 +66,14 @@ export const getWebinars = async (req, res) => {
   }
 }
 
+export const getChinmaySessions = async (req, res) => {
+  try{
+    const expert = await Expert.findOne({id:201});
+    expert.booked_dates.sort((a,b) => new Date(a.timestamp) - new Date(b.timestamp));
+    res.status(200).json(expert.booked_dates);
+  }catch(e){
+    res.status(404).json({ message: error.message });
+  }
+}
+
 
