@@ -44,6 +44,7 @@ const expertSchema = new mongoose.Schema({
       friend_email : { type: String, default : "" },
       session_id : { type: Number, required : false },
       item_id : { type: Number, required : false },
+      testimonial_sent  : { type: String, default : 'false' },
     }
   ],
   added_slots : [
