@@ -56,6 +56,7 @@ const UserSchema = new mongoose.Schema({
       is_reschedule : {type:Boolean,default:false},
       friend_email : {type:String,default:""},
       is_bring_friend : {type:Boolean,default:false},
+      
     }
   ],
   product_purchased: [

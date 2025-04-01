@@ -1,4 +1,5 @@
-export const sessionEmailContent = ({ email, sessionId, name }) => {
+export const sessionEmailContent = ({  name }) => {
+ 
   return `<!DOCTYPE html>
   <html lang="en">
   <head>
@@ -59,17 +60,24 @@ export const sessionEmailContent = ({ email, sessionId, name }) => {
   <body>
     <div class="email-container">
       <div class="header">
-        <h1>Welcome to the Consulting Fellowship! You're In!</h1>
+        <h1>Quick Favor? Share Your Thoughts!</h1>
       </div>
       <div class="content">
         <p>Hey ${name}!</p>
         <p>
-  Congrats on securing your spot in the Consulting Fellowship!  We're excited to have you with us on this journey to consulting greatness.</p>
+  We’d love to hear from you! If Off-Campus has helped you in any way—whether in landing an internship, acing an interview, or just boosting your confidence—could you take a minute to share your experience?
+</p>
         
-        <p>Next Steps? We're adding you to the exclusive WhatsApp group, where all the magic (and occasional memes) will happen. Expect a message from us soon!</p>
+        <p>Just click this link: <a href="https://off-campus.in/testimonial">Testimonial Form</a> and fill out the form. Your feedback means a lot to us and helps others in their journey!</p>
+</p>
         
         <p>
-  Get ready to crack those case studies, sharpen your skills, and become a consulting superstar. And remember, you’re not just learning, you’re leveling up!</p>
+  It won’t take more than 2 minutes, and your words might inspire someone else to take the first step!
+
+</p>
+
+        <p>Thanks a ton! 
+</p>
         
         <p style="text-align: right;">Cheers,<br><strong>Team Off-Campus</strong></p>
       </div>

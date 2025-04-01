@@ -53,13 +53,17 @@ export const getSession = async (req, res) => {
     //   );
     // });
 
+    
+const oneHourAgo = new Date();
+oneHourAgo.setHours(oneHourAgo.getHours());
+
     expert.booked_dates = expert.booked_dates
       .map((date) => date.toObject())
       .filter((date) => {
         return (
-          new Date(date.timestamp) > new Date() &&
+          new Date(date.timestamp) > new Date("2025-04-01T16:00:00")  &&
           date.email !== "ashwanidey2904@gmail.com" &&
-          date.testimonial_sent === false
+          date.testimonial_sent === "false"
         );
       });
 

@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 
 import userRoutes from "./routes/user.js";
+import { Expert } from "./models/Experts.js";
 
 const app = express();
 app.use(express.json());
@@ -20,8 +21,11 @@ app.use("/users", userRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL)
-  .then(() => {
+  .then( async() => {
     console.log("Connected to MongoDB");
+
+    const expert = await Expert.findOne({id : 101})
+
 
     app.listen(PORT, () => {
       console.log(`Server is running at Port: ${PORT}`);

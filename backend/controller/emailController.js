@@ -3,17 +3,20 @@ import dotenv from "dotenv";
 
 import { sessionEmailContent } from "../utils/sessionEmailContent.js"; // Assuming you have this
 import { Expert } from "../models/Experts.js";
+import { User } from "../models/User.js";
 
 dotenv.config();
 
 // Email sending function
 export const sendTestimonialEmail = async (req, res) => {
   try {
-    // Extract data from request body
-    console.log(req.body);
-    const { sessionId, email, name, date } = req.body;
-
-    console.log("date", date);
+    // Extract data from request bod
+    const { sessionId, email, date } = req.body;
+   const user = await User.findOne({ email: email });
+    
+    const name = user.username
+ 
+    // console.log("date", date);
 
     const expert = await Expert.findOne({ id: 101 });
 
@@ -23,7 +26,6 @@ export const sendTestimonialEmail = async (req, res) => {
     //   (dating) => dating.timestamp.toISOString() === date
     // )[0].testimonial_sent = true;
 
-    console.log(typeof date);
 
     // expert.booked_dates
     //   .map((dating) => dating.toObject())
@@ -36,25 +38,30 @@ export const sendTestimonialEmail = async (req, res) => {
 
     // await expert.save();
 
-    const matchingDate = expert.booked_dates
-      .map((dating) => dating._doc || dating)
-      .find((dating) => {
-        const timestampISOString = new Date(dating.timestamp).toISOString();
-        return timestampISOString === date;
-      });
+    // console.log("Before modification:", expert.booked_dates);
 
-    if (matchingDate) {
-      // If it's a Mongoose document
-      if (matchingDate.save) {
-        matchingDate.testimonial_sent = true;
-        await matchingDate.save(); // Make sure to await if this is an async operation
-      } else {
-        // If it's a plain object
-        matchingDate.testimonial_sent = true;
-      }
-    }
+const sessionIdStr = sessionId;
+let modified = false;
 
-    console.log("expertw", expert.booked_dates);
+for (let i = 0; i < expert.booked_dates.length; i++) {
+  if (expert.booked_dates[i].session_id === sessionId) {
+    
+    expert.booked_dates[i].testimonial_sent = "true"; 
+ 
+    break;
+  }
+}
+
+
+// console.log("After modification:", expert.booked_dates);
+
+    
+    // console.log("expert", expert.booked_dates);
+ 
+   
+  await expert.save();
+     
+    
     // Create transporter
     const transporter = nodemailer.createTransport({
       host: "smtp.hostinger.com",
@@ -71,7 +78,7 @@ export const sendTestimonialEmail = async (req, res) => {
       from: "Off-Campus <support@off-campus.in>",
       to: email,
       subject: "Testimonial Request",
-      html: sessionEmailContent(email, sessionId, name), // Modify this function as needed
+      html: sessionEmailContent({name}), // Modify this function as needed
     };
 
     // Send email
