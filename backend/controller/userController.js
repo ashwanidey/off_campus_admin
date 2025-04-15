@@ -95,7 +95,7 @@ export const getResumeReview = async (req, res) => {
 
 export const getWebinars = async (req, res) => {
   try {
-    const webinars = await Webinar.findOne({ id: 101 });
+    const webinars = await Webinar.findOne({ id: 102 });
     res.status(200).json(webinars.participants);
   } catch (error) {
     res.status(404).json({ message: error.message });
