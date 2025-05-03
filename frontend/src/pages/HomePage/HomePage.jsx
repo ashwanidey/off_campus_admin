@@ -1,15 +1,23 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   return (
-    <div className='text-xl flex flex-col'>
-    <a href="/users">Users</a>
-    <a href="/session">Session</a>
-    <a href="/resume-review">Resume Review</a>
-    <a href="/webinar">Webinar</a>
-    <a href="/chinmay-sessions">Chinmay Session</a>
+    <div className="text-xl flex flex-col gap-1">
+      <a href="/users">Users</a>
+      <a href="/session">Session</a>
+      <a href="/resume-review">Resume Review</a>
+      <a href="/webinar">Webinar</a>
+      <a href="/chinmay-sessions">Chinmay Session</a>
+      <button
+        onClick={() => navigate("/login")}
+        className="bg-blue-600 hover:bg-blue-400 text-white text-sm font-normal py-2 px-4 rounded-lg shadow-md transition duration-300"
+      >
+        Login
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
