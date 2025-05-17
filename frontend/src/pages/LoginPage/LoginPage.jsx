@@ -1,12 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { host } from "../../utils/api";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,22 +17,26 @@ export default function LoginPage() {
     console.log("username", username);
     console.log("pswd", password);
     try {
-      const response = await axios.post(`${host}/api/login`, {
-        username,
+      const response = await axios.post(`${host}/auth/login`, {
         password,
       });
 
       // Handle successful login
+      
+      const token = response.data.token;
+      localStorage.setItem("token", token);
 
-      console.log("Login successful", response.data);
       setLoading(false);
 
-      // Redirect or update app state here
+     
+      navigate("/");
+
     } catch (err) {
       // Axios captures error responses (4xx, 5xx) in the catch block
       setError(
         err.response?.data?.message || err.message || "Something went wrong"
       );
+      setLoading(false);
     }
   };
 
@@ -58,7 +64,7 @@ export default function LoginPage() {
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
-            <div>
+            {/* <div>
               <label
                 htmlFor="username"
                 className="block text-sm font-medium text-gray-300 text-left"
@@ -75,7 +81,7 @@ export default function LoginPage() {
                 className="mt-1 block w-full px-3 py-3 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 placeholder="Enter your username"
               />
-            </div>
+            </div> */}
             <div>
               <label
                 htmlFor="password"
