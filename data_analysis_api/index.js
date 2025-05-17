@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 import { Expert } from "./models/Experts.js";
 import dataExposeRoutes from "./routes/dataExposeRoutes.js";
+import swaggerUi from "swagger-ui-express";
+import specs from "./swagger.js";
 
 const app = express();
 app.use(express.json());
@@ -12,11 +14,18 @@ dotenv.config();
 app.use(helmet());
 
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(cors());
+app.use(cors({
+  origin: '*', // allows all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // allow specific methods
+  allowedHeaders: ['Content-Type', 'Authorization'] // allow specific headers
+}));
 
 const PORT = process.env.PORT || 8080;
 
+
 app.use("/api/v1", dataExposeRoutes);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
+
 
 
 mongoose
