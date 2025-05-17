@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token
+    navigate("/login"); // Redirect to login page
+  };
+
   return (
     <div className="text-xl flex flex-col gap-1">
       <a href="/users">Users</a>
@@ -11,13 +17,14 @@ const HomePage = () => {
       <a href="/webinar">Webinar</a>
       <a href="/chinmay-sessions">Chinmay Session</a>
       <button
-        onClick={() => navigate("/login")}
+        onClick={handleLogout}
         className="bg-blue-600 hover:bg-blue-400 text-white text-sm font-normal py-2 px-4 rounded-lg shadow-md transition duration-300"
       >
-        Login
+        Log Out
       </button>
     </div>
   );
 };
+
 
 export default HomePage;

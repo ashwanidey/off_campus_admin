@@ -15,6 +15,10 @@ const expertSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+  password: {
+    type: String,
+    default: "",
+  },
   avatar: {
     type: String,
     default: "",
