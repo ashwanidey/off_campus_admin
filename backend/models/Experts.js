@@ -64,6 +64,12 @@ const expertSchema = new mongoose.Schema({
       timing: { type: String, required: true },
     },
   ],
+  job_openings : [
+    {
+      company_name: { type: String, required: true },
+      file_name: { type: String, required: true },
+    },
+  ]
 });
 
 export const Expert = mongoose.model('Expert', expertSchema);
