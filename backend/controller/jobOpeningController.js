@@ -55,9 +55,6 @@ const upload = multer({
 
 export const uploadCompanyImage = async (req, res) => {
   const uploadSingle = upload.single("file");
-
-  console.log("here");
-
   uploadSingle(req, res, async (err) => {
     if (err) {
       return res.status(400).json({ message: err.message });
@@ -81,28 +78,35 @@ export const uploadCompanyImage = async (req, res) => {
         ContentType: file.mimetype,
       };
 
-      s3.upload(uploadParams, (err, data) => {
+      s3.upload(uploadParams, async (err, data) => {
         if (err) {
           return res
             .status(500)
             .json({ message: "Error uploading to S3", error: err });
         }
-        return res
-          .status(200)
-          .json({ message: "File uploaded successfully", url: data.Location });
-      });
 
-      console.log("File uploaded to S3:", file.originalname);
-      const expert = await Expert.findOne({ id: 101 });
-      expert.job_openings.push({
-        company_name: companyName,
-        file_name: file.originalname,
-      });
-      await expert.save();
+        try {
+          console.log("File uploaded to S3:", file.originalname);
+          const expert = await Expert.findOne({ id: 101 });
+          if (expert) {
+            expert.job_openings.push({
+              company_name: companyName,
+              file_name: file.originalname,
+            });
+            await expert.save();
+          }
 
-      res.status(200).json({
-        message: "File uploaded successfully",
-        // url: `https://${process.env.AWS_S3_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/company_images/${file.originalname}`,
+          return res.status(200).json({
+            message: "File uploaded successfully",
+            url: data.Location,
+          });
+        } catch (dbErr) {
+          console.error("Database error:", dbErr);
+          return res.status(500).json({
+            message: "File uploaded but failed to update database",
+            error: dbErr,
+          });
+        }
       });
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -110,6 +114,7 @@ export const uploadCompanyImage = async (req, res) => {
     }
   });
 };
+
 
 export const companiesLogoList = async (req, res) => {
   try {

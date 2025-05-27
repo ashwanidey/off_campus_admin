@@ -238,7 +238,7 @@ const JobOpeningForm = () => {
             >
               <option value="">Select an image</option>
               {[
-                ...new Set(companyOptions.map((item) => item.company_name)),
+                ...new Set(companyOptions.map((item) => item.file_name)),
               ].map((companyName, index) => (
                 <option key={index} value={companyName}>
                   {companyName}
