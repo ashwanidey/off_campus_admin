@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import helmet from "helmet";
 
 import userRoutes from "./routes/user.js";
+
+import jobRoutes from "./routes/jobOpeningRoutes.js";
 import authRoutes from "./routes/auth.js";
 import { Expert } from "./models/Experts.js";
 
@@ -19,7 +21,10 @@ app.use(cors());
 const PORT = process.env.PORT || 8080;
 
 app.use("/users", userRoutes);
+
+app.use("/job", jobRoutes);
 app.use("/auth", authRoutes);
+
 
 mongoose
   .connect(process.env.MONGO_URL)
