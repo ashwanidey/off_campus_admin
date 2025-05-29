@@ -15,21 +15,25 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import AddSlot from "./pages/AddSlot/AddSlot";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 
-
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/users" element={<UserPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/details/:id" element={<UserDetailsPage />} />
-        <Route path="/session" element={<SessionDetailPage />} />
-        <Route path="/resume-review" element={<ResumeReviewPage />} />
-        <Route path="/webinar" element={<WebinarPage />} />
-        <Route path="/chinmay-sessions" element={<ChinmaySessionPage />} />
-        <Route path="/company-logo" element={<LogoAdder />} />
-        <Route path="/job-openings" element={<JobDescription />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/company-logo" element={
+          <ProtectedRoutes>
+            <LogoAdder />
+          </ProtectedRoutes>
+        } />
+        <Route path="/job-openings" element={
+          <ProtectedRoutes>
+            <JobDescription />
+          </ProtectedRoutes>
+        } />
+        <Route path="/login" element={
+          <ProtectedRoutes>
+            <LoginPage />
+          </ProtectedRoutes>
+        } />
         <Route path="/" element={
           <ProtectedRoutes>
             <HomePage />
