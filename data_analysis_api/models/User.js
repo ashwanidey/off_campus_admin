@@ -83,6 +83,13 @@ const UserSchema = new mongoose.Schema({
       purchased_date : { type: Date, default: Date.now() },
       order_id: { type: String, required: true },
     }
+  ],
+  cohort_purchased : [
+    {
+      webinar_id : { type: Number, required: true },
+      purchased_date : { type: Date, default: Date.now() },
+      order_id: { type: String, required: true },
+    }
   ]
 });
 

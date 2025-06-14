@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  getAllUsers,
   getBasicReports,
   getCohortStats,
   getServiceStats,
@@ -68,5 +69,17 @@ router.get('/get-services-reports', getServiceStats);
  *         description: Successfully retrieved total sale data
  */
 router.get('/get-total-sale', getTotalSale);
+
+/**
+ * @swagger
+ * /api/v1/get-total-sale:
+ *   get:
+ *     summary: Get total sale data
+ *     tags: [Reports]
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved total sale data
+ */
+router.get('/get-all-users', getAllUsers);
 
 export default router;

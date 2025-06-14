@@ -188,3 +188,30 @@ export const getTotalSale = async (req,res) => {
     res.status(500).json({ message: error.message });
   }
 }
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    const filteredUsers = users.map(user => {
+      return {
+        user_id: user.user_id,
+        phone_number: user.phone_number,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        course_purchased: user.course_purchased.length,
+        session_purchased: user.session_purchased.filter(session => session.status === "success").length,
+        product_purchased: user.product_purchased.length,
+        service_purchased: user.service_purchased.filter(session => session.status === "success").length,
+        webinar_purchased: user.webinar_purchased.length,
+        cohort_purchased: user.cohort_purchased.length
+      };
+    }
+    )
+    filteredUsers.reverse()
+
+    res.status(200).json(filteredUsers);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
