@@ -30,9 +30,9 @@ function App() {
           </ProtectedRoutes>
         } />
         <Route path="/login" element={
-          <ProtectedRoutes>
+          // <ProtectedRoutes>
             <LoginPage />
-          </ProtectedRoutes>
+          // </ProtectedRoutes>
         } />
         <Route path="/" element={
           <ProtectedRoutes>
