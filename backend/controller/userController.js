@@ -3,6 +3,7 @@ import { Service } from "../models/Service.js";
 import { Session } from "../models/Session.js";
 import { User } from "../models/User.js";
 import { Webinar } from "../models/Webinar.js";
+import { Course } from "../models/Courses.js";
 
 export const getUsers = async (req, res) => {
   try {
@@ -53,15 +54,14 @@ export const getSession = async (req, res) => {
     //   );
     // });
 
-    
-const oneHourAgo = new Date();
-oneHourAgo.setHours(oneHourAgo.getHours());
+    const oneHourAgo = new Date();
+    oneHourAgo.setHours(oneHourAgo.getHours());
 
     expert.booked_dates = expert.booked_dates
       .map((date) => date.toObject())
       .filter((date) => {
         return (
-          new Date(date.timestamp) > new Date("2025-04-01T16:00:00")  &&
+          new Date(date.timestamp) > new Date("2025-04-01T16:00:00") &&
           date.email !== "ashwanidey2904@gmail.com" &&
           date.testimonial_sent === "false"
         );
@@ -111,5 +111,14 @@ export const getChinmaySessions = async (req, res) => {
     res.status(200).json(expert.booked_dates);
   } catch (e) {
     res.status(404).json({ message: error.message });
+  }
+};
+
+export const getAllCourses = async (req, res) => {
+  try {
+    const allCourses = await Course.find();
+    return res.status(200).json(allCourses);
+  } catch (error) {
+    return res.status(500).json({ message: error });
   }
 };

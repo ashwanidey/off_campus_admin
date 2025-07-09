@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  user_id:{
+  user_id: {
     type: Number,
     required: true,
     unique: true,
@@ -13,9 +13,8 @@ const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    
   },
-  isVerified : {
+  isVerified: {
     type: Boolean,
     default: false,
   },
@@ -26,7 +25,7 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    default :  ""
+    default: "",
   },
   profile_picture: {
     type: String,
@@ -37,53 +36,53 @@ const UserSchema = new mongoose.Schema({
     default: "",
   },
   course_purchased: [
-    { 
-      course_title : { type: String, required: true },
+    {
+      course_title: { type: String, required: true },
       course_id: { type: Number, required: true },
       expiry_date: { type: Date, required: true },
       purchased_date: { type: Date, default: Date.now() },
       order_id: { type: String, required: true },
-    }
+      is_whatsapp: { type: Boolean, default: false },
+    },
   ],
   session_purchased: [
-    { 
+    {
       session_id: { type: Number, required: true },
       booked_date: { type: Date },
-      purchased_date : { type: Date, default: Date.now() },
+      purchased_date: { type: Date, default: Date.now() },
       order_id: { type: String, required: true },
       status: { type: String, default: "pending" },
-      reschedule_for : {type:Number,default:0},
-      is_reschedule : {type:Boolean,default:false},
-      friend_email : {type:String,default:""},
-      is_bring_friend : {type:Boolean,default:false},
-      
-    }
+      reschedule_for: { type: Number, default: 0 },
+      is_reschedule: { type: Boolean, default: false },
+      friend_email: { type: String, default: "" },
+      is_bring_friend: { type: Boolean, default: false },
+    },
   ],
   product_purchased: [
-    { 
+    {
       product_id: { type: Number, required: true },
-      purchased_date : { type: Date, default: Date.now() },
+      purchased_date: { type: Date, default: Date.now() },
       order_id: { type: String, required: true },
-    }
+    },
   ],
-  service_purchased : [
+  service_purchased: [
     {
-      service_id : { type: Number, required: true },
-      purchased_date : { type: Date, default: Date.now() },
+      service_id: { type: Number, required: true },
+      purchased_date: { type: Date, default: Date.now() },
       order_id: { type: String, required: true },
-      item_id : { type: Number, required: false },
+      item_id: { type: Number, required: false },
       status: { type: String, default: "pending" },
-      filename : { type: String, required : true },
-      note : { type: String, required : false },
-    }
+      filename: { type: String, required: true },
+      note: { type: String, required: false },
+    },
   ],
-  webinar_purchased : [
+  webinar_purchased: [
     {
-      webinar_id : { type: Number, required: true },
-      purchased_date : { type: Date, default: Date.now() },
+      webinar_id: { type: Number, required: true },
+      purchased_date: { type: Date, default: Date.now() },
       order_id: { type: String, required: true },
-    }
-  ]
+    },
+  ],
 });
 
-export const User = mongoose.model('User', UserSchema);
+export const User = mongoose.model("User", UserSchema);
