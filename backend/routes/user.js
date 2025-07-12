@@ -6,6 +6,7 @@ import {
   getUser,
   getUsers,
   getWebinars,
+  getAllCourses,
 } from "../controller/userController.js";
 import { sendTestimonialEmail } from "../controller/emailController.js";
 
@@ -18,5 +19,6 @@ Router.get("/get-review", getResumeReview);
 Router.get("/get-webinars", getWebinars);
 Router.get("/get-chinmay-session", getChinmaySessions);
 Router.post("/send-testimonial-email", sendTestimonialEmail);
+Router.get("/get-courses", getAllCourses);
 
 export default Router;

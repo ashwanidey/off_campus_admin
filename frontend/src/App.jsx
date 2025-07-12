@@ -14,66 +14,109 @@ import JobDescription from "./pages/JobDescription/JobDescription";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import AddSlot from "./pages/AddSlot/AddSlot";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import AddUserIntoCourse from "./pages/AddUserIntoCourse/AddUserIntoCourse";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/company-logo" element={
-          <ProtectedRoutes>
-            <LogoAdder />
-          </ProtectedRoutes>
-        } />
-        <Route path="/job-openings" element={
-          <ProtectedRoutes>
-            <JobDescription />
-          </ProtectedRoutes>
-        } />
-        <Route path="/login" element={
-          // <ProtectedRoutes>
+        <Route
+          path="/company-logo"
+          element={
+            <ProtectedRoutes>
+              <LogoAdder />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/job-openings"
+          element={
+            <ProtectedRoutes>
+              <JobDescription />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            // <ProtectedRoutes>
             <LoginPage />
-          // </ProtectedRoutes>
-        } />
-        <Route path="/" element={
-          <ProtectedRoutes>
-            <HomePage />
-          </ProtectedRoutes>
-        } />
-        <Route path="/users" element={
-          <ProtectedRoutes>
-            <UserPage />
-          </ProtectedRoutes>
-        } />
-        <Route path="/details/:id" element={
-          <ProtectedRoutes>
-            <UserDetailsPage />
-          </ProtectedRoutes>
-        } />
-        <Route path="/session" element={
-          <ProtectedRoutes>
-            <SessionDetailPage />
-          </ProtectedRoutes>
-        } />
-        <Route path="/resume-review" element={
-          <ProtectedRoutes>
-            <ResumeReviewPage />
-          </ProtectedRoutes>
-        } />
-        <Route path="/webinar" element={
-          <ProtectedRoutes>
-            <WebinarPage />
-          </ProtectedRoutes>
-        } />
-        <Route path="/chinmay-sessions" element={
-          <ProtectedRoutes>
-            <ChinmaySessionPage />
-          </ProtectedRoutes>
-        } />
-        <Route path="/add-slot" element={
-          <ProtectedRoutes>
-            <AddSlot />
-          </ProtectedRoutes>
-        } />
+            // </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoutes>
+              <HomePage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <ProtectedRoutes>
+              <UserPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/details/:id"
+          element={
+            <ProtectedRoutes>
+              <UserDetailsPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/session"
+          element={
+            <ProtectedRoutes>
+              <SessionDetailPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/resume-review"
+          element={
+            <ProtectedRoutes>
+              <ResumeReviewPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/webinar"
+          element={
+            <ProtectedRoutes>
+              <WebinarPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/chinmay-sessions"
+          element={
+            <ProtectedRoutes>
+              <ChinmaySessionPage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/add-slot"
+          element={
+            <ProtectedRoutes>
+              <AddSlot />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/add-user-into-course"
+          element={
+            <ProtectedRoutes>
+              <AddUserIntoCourse />
+            </ProtectedRoutes>
+          }
+        />
       </Routes>
     </>
   );
