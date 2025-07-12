@@ -104,13 +104,13 @@ export const extendCourse = async (req, res) => {
     console.log("currentexpiry", currentExpiry);
 
     const newExpiry = new Date(
-      currentExpiry.getTime() + extendDays * 24 * 60 * 60 * 1000
+      Date.now() + extendDays * 24 * 60 * 60 * 1000
     );
     console.log("newexpiry", newExpiry);
     userFound.course_purchased[correctIndex].expiry_date =
       newExpiry.toISOString();
     await userFound.save();
-    console.log("final", userFound.course_purchased[0].expiry_date);
+    // console.log("final", userFound.course_purchased[0].expiry_date);
     return res.status(200).json({
       message: `${extendDays} days have been extended for ${emailid} for the course ${courseTitle}`,
     });
