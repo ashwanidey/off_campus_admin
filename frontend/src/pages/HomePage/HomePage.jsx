@@ -22,6 +22,7 @@ const HomePage = () => {
         <a href="/company-logo">Add Company Logo</a>
         <a href="/job-openings">Add Job Opening</a>
         <a href="/add-user-into-course"> Add Course Into User</a>
+        <a href="/success-story-testimonial">Success Story Adder</a>
       </div>
 
       <button

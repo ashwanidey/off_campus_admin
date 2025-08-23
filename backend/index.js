@@ -9,6 +9,7 @@ import userRoutes from "./routes/user.js";
 import jobRoutes from "./routes/jobOpeningRoutes.js";
 import authRoutes from "./routes/auth.js";
 import addRoutes from "./routes/addRoutes.js";
+import testimonialRoutes from "./routes/testimonialRoutes.js";
 import { Expert } from "./models/Experts.js";
 
 const app = express();
@@ -26,6 +27,7 @@ app.use("/users", userRoutes);
 app.use("/job", jobRoutes);
 app.use("/auth", authRoutes);
 app.use("/add", addRoutes);
+app.use("/testimonial", testimonialRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL)

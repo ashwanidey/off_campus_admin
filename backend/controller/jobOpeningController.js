@@ -60,6 +60,9 @@ export const uploadCompanyImage = async (req, res) => {
       return res.status(400).json({ message: err.message });
     }
 
+    // console.log("body: ", req.body);
+    // console.log("file: ", req.file);
+
     const file = req.file;
     const companyName = req.body.company;
     if (!companyName) {
@@ -73,7 +76,7 @@ export const uploadCompanyImage = async (req, res) => {
     try {
       const uploadParams = {
         Bucket: process.env.AWS_S3_BUCKET_NAME,
-        Key: `company_images/${file.originalname}`,
+        Key: `success_story/${file.originalname}`,
         Body: file.buffer,
         ContentType: file.mimetype,
       };
@@ -114,7 +117,6 @@ export const uploadCompanyImage = async (req, res) => {
     }
   });
 };
-
 
 export const companiesLogoList = async (req, res) => {
   try {

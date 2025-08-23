@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import AddSlot from "./pages/AddSlot/AddSlot";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import AddUserIntoCourse from "./pages/AddUserIntoCourse/AddUserIntoCourse";
+import SuccessStoryAdder from "./pages/SuccessStories/SuccessStoryAdder";
 
 function App() {
   return (
@@ -114,6 +115,15 @@ function App() {
           element={
             <ProtectedRoutes>
               <AddUserIntoCourse />
+            </ProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/success-story-testimonial"
+          element={
+            <ProtectedRoutes>
+              <SuccessStoryAdder />
             </ProtectedRoutes>
           }
         />

@@ -1,0 +1,16 @@
+import JobOpeningForm from "../../components/JobOpeningForm.jsx";
+import SuccessStoryForm from "../../components/SuccessStory/SuccessStoryForm.jsx";
+
+const SuccessStoryAdder = () => {
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">
+        Success Stories(add company logo in the logo adder first to show in
+        dropdown)
+      </h1>
+      <SuccessStoryForm />
+    </div>
+  );
+};
+
+export default SuccessStoryAdder;

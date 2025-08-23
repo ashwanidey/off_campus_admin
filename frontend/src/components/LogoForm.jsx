@@ -53,6 +53,8 @@ const CompanyImageUploadForm = () => {
     uploadData.append("company", formData.company);
     uploadData.append("file", formData.file);
 
+    // console.log("up:", uploadData);
+
     // for (let [key, value] of uploadData.entries()) {
     //   console.log(key, value);
     // }
