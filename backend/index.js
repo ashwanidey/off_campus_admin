@@ -10,6 +10,7 @@ import jobRoutes from "./routes/jobOpeningRoutes.js";
 import authRoutes from "./routes/auth.js";
 import addRoutes from "./routes/addRoutes.js";
 import testimonialRoutes from "./routes/testimonialRoutes.js";
+import collegeServiceRoutes from "./routes/collegeServiceRoutes.js";
 import { Expert } from "./models/Experts.js";
 
 const app = express();
@@ -28,6 +29,7 @@ app.use("/job", jobRoutes);
 app.use("/auth", authRoutes);
 app.use("/add", addRoutes);
 app.use("/testimonial", testimonialRoutes);
+app.use("/college-service", collegeServiceRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL)

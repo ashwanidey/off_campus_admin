@@ -16,6 +16,7 @@ import AddSlot from "./pages/AddSlot/AddSlot";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import AddUserIntoCourse from "./pages/AddUserIntoCourse/AddUserIntoCourse";
 import SuccessStoryAdder from "./pages/SuccessStories/SuccessStoryAdder";
+import CollegeServicesDashboard from "./pages/CollegeService/CollegeService";
 
 function App() {
   return (
@@ -124,6 +125,14 @@ function App() {
           element={
             <ProtectedRoutes>
               <SuccessStoryAdder />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/college-services"
+          element={
+            <ProtectedRoutes>
+              <CollegeServicesDashboard />
             </ProtectedRoutes>
           }
         />
